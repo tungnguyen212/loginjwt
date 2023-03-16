@@ -6,7 +6,6 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('HEHEHEHE');
   };
   return (
     <div className='container'>

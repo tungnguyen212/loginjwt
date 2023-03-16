@@ -1,12 +1,32 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('HEHEHEHE');
+    try {
+      const { data } = await axios.post(
+        'http://localhost:4000/register',
+        {
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(data);
+      if (data) {
+        if (data.errors) {
+        } else {
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className='container'>
